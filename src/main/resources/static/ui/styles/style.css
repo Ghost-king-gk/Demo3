@@ -1,0 +1,117 @@
+body{
+    font-family:Segoe UI,Roboto,Arial,sans-serif;
+    background:#f6f8fa;
+    color:#222;
+    margin:0;
+    padding:20px
+}
+.container{
+    max-width:900px;
+    margin:0 auto;
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,.06)
+}
+.nav{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    margin-bottom:16px;
+    flex-wrap:wrap
+}
+.nav input{
+    padding:6px;
+    border:1px solid #ccc;  /* 偏灰色边框 */
+    border-radius:4px
+}
+button{
+    padding:14px 18px;    /* 上下8px，左右12px的内边距 */
+    border:3px solid #00347c;  /* 边框颜色与背景色一致 */
+    background:#76aafe;   /* 按钮背景色 */
+    color:#00347c;      /* 按钮文字颜色 */
+    border-radius:8px;   /* 圆角边框 */
+    box-shadow: 0 4px 6px 2px rgba(12, 12, 12, 0.1); /* 按钮阴影效果 */
+    cursor:pointer;   /* 鼠标悬停时显示为指针 */
+    transition: transform 0.2s ease-in-out,                 /* transform平滑过渡效果 */
+                opacity 0.2s ease-in-out,                   /* opacity透明度平滑过渡效果 */
+                background-color 0.2s ease-in-out,          /* 背景色平滑过渡效果 */
+                color 0.2s ease-in-out;  /* 平滑过渡效果 */
+    position: relative;
+    overflow: hidden; /* 确保水波效果不会溢出按钮边界 */
+}
+
+@keyframes ripple {
+    /* 从小到大扩散并渐隐的水波动画 */
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(8);
+        opacity: 0;
+    }
+}
+
+
+/* JS 可选设置 --ripple-x / --ripple-y 
+   触发逻辑：通过添加/移除 .ripple 类（你现有的 JS 已在做），伪元素动画会在类添加时播放 */
+.ripple-effect{
+    position: absolute;
+    left: var(--ripple-x, 50%);  /* var() 函数用于使用 CSS 变量，默认值为 50% */
+    top: var(--ripple-y, 50%);  /*--ripple-y/x 本意指的是ripple效果的Y/X坐标。*/
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35); /* 亮色水波，暗色可改为 rgba(0,0,0,0.12) */
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    opacity: 0;
+    /* 动画只在类被添加时播放；若需要在同一个元素重复播放，JS 应先移除再添加类（你已有实现） */
+    animation: ripple 0.5s ease-out;
+}
+
+button:hover {
+    opacity: 0.90;
+    /* 使按钮变得更透明 */
+    transform: translateY(-3px); /* 轻微缩小按钮并向上移动 */
+    background-color: #00347c;   /* 深蓝色背景 */
+    color:#ffffff;   /* 白色文字 */
+    
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse
+}
+.table th,.table td{
+    border:1px solid #e6e6e6;
+    padding:8px;
+    text-align:left
+}
+.detail th{
+    width:30%;
+    background:#fafafa;
+    padding:8px;
+    border:1px solid #eee
+}
+.loading{
+    color:#666
+}
+.error{
+    color:#b00020;
+    background:#fff0f0;
+    padding:8px;
+    border-radius:4px
+}
+.result{
+    white-space:pre-wrap
+}
+.hint{
+    color:#666
+}
+footer{
+    margin-top:12px;
+    color:#888;
+    font-size:12px
+}
